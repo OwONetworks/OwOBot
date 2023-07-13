@@ -3,6 +3,7 @@
 - 可以在QQ和Telegram上使用
 - 你可以在 issue 和 QQ群(700080009) 中找到我们
 - 我们自己使用的机器人可能会有一些特殊功能，我们不会把它们加入到这个项目中
+- 你可以在 [这里](./docs/README.md) 找到更多的文档（目前还在编写中）
 
 ## 关于OwOBot
 QQ部分使用 [icqq](https://github.com/icqqjs/icqq) 作为基础
