@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url(http://127.0.0.1:30001/uploads/01GR92JGST83XY6XQVKZZ604W2.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      zoom: 2;
+    }
+
+    .body {
+      margin: 5%;
+      padding: 5%;
+      color: #fff;
+      border-radius: 4px;
+      column-count: 3;
+    }
+
+    .item {
+      backdrop-filter: blur(4px);
+      border: 1px solid #fff;
+      vertical-align: top;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1em;
+      margin-bottom: 1.4em;
+      border-radius: 4px;
+      overflow: hidden;
+      vertical-align: top;
+    }
+
+    .item .title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 0.4em;
+    }
+
+    .block {
+      margin-top: 1em;
+    }
+
+    .block .title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+    }
+
+    .block .content p {
+      font-size: 14px;
+      line-height: 16px;
+      margin: 4px 0;
+    }
+
+    li {
+      margin-left: 1.4em;
+    }
+
+    code {
+      font-family: Consolas, "Liberation Mono", Courier, monospace;
+      font-size: 0.8em;
+      background-color: rgb(126, 229, 255);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      color: #000;
+    }
+
+    .tag {
+      background-color: #cf4e4e;
+      color: #fff;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.8em;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div class="body">
+    <div class="item">
+      <p class="title">关于自然语言调用</p>
+      <div class="content">
+        <div class="block">
+          <p class="title">使用方法: </p>
+          <div class="content">
+            <p>使用感叹号（中英文均可）开头，直接写要机器人做什么即可</p>
+            <p>例如 <code>!查看订阅列表</code> ，直接对机器人说出来你要做什么即可</p>
+            <p>所有标记了 <span class="tag">自然语言调用</span> 的功能都可以这么做</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="render">
+      <p class="title">图片渲染工具</p>
+      <div class="content">
+        <div class="block">
+          <p class="title">可用指令: </p>
+          <div class="content">
+            <p>渲染消息: /msg + 回复一条消息</p>
+            <p>生成扔头像: /throw + @或者回复消息</p>
+            <p>查看世界线: 世界线</p>
+          </div>
+        </div>
+        <div class="block">
+          <p class="title">特殊说明: </p>
+          <div class="content">
+            <p>网页截图功能请合理使用</p>
+            <p>世界线命令可以在后面加上0~5的数字</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="clone">
+      <p class="title">语音克隆</p>
+      <div class="content">
+        <div class="block">
+          <p class="title">可用指令: </p>
+          <div class="content">
+            <p>克隆: /clone + 要说的文字</p>
+            <p>使用预设: /c + 要说的文字</p>
+          </div>
+        </div>
+        <div class="block">
+          <p class="title">特殊说明: </p>
+          <div class="content">
+            <p>需要允许用户上传文件</p>
+            <p>在使用命令后发送一段语音文件即可</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="rss">
+      <p class="title">RSS订阅</p>
+      <span class="tag">自然语言调用</span>
+      <div class="content">
+        <div class="block">
+          <p class="title">可用指令: </p>
+          <div class="content">
+            <p>添加订阅: /rss add 链接</p>
+            <p>查看列表: /rss list</p>
+            <p>删除订阅: /rss remove ID</p>
+            <p>更新订阅: /rss update</p>
+          </div>
+        </div>
+        <div class="block">
+          <p class="title">快速订阅: </p>
+          <div class="content">
+            <p>使用方法: 快速订阅 + 名字</p>
+            <p>例如: 快速订阅游戏折扣</p>
+            <p>快速订阅中可用的选项: </p>
+            <ul>
+              <li>游戏折扣</li>
+              <li>原神公告</li>
+              <li>明日方舟公告</li>
+              <li>PCR公告</li>
+              <li>Epic免费游戏</li>
+              <li>地震速报</li>
+            </ul>
+          </div>
+        </div>
+        <div class="block">
+          <p class="title">特殊说明: </p>
+          <div class="content">
+            <p>RSS订阅只支持RSSHub和GitHub的订阅源，其中RSSHub的链接为 https://rss.3m.chat</p>
+            <p>本插件的所有指令只有管理员和群主有权使用</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="wordle">
+      <p class="title">Wordle</p>
+      <span class="tag">自然语言调用</span>
+      <div class="content">
+        <div class="block">
+          <p class="title">可用指令: </p>
+          <div class="content">
+            <p>开始一局Wordle: /wordle</p>
+            <p>指定词库开启一局Wordle: /wordle 词库</p>
+          </div>
+        </div>
+        <div class="block">
+          <p class="title">特殊说明: </p>
+          <div class="content">
+            <p>可选词库: </p>
+            <ul>
+              <li>SUM - 合集(包含 CET4+6 TOFEL GRE)</li>
+              <li>TEM8 - 专业8级</li>
+              <li>GRE8000 - GRE词库</li>
+              <li>TOFEL - 托福</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="trace">
+      <p class="title">以图搜番</p>
+      <span class="tag">自然语言调用</span>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>搜索: /trace + 任意图片</p>
+        </div>
+      </div>
+      <div class="block">
+        <p class="title">特殊说明: </p>
+        <div class="content">
+          <p>搜索源来自 trace.moe 这个网站</p>
+          <p>请使用完整番剧截图进行搜索</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="search">
+      <p class="title">群聊消息搜索</p>
+      <span class="tag">仅支持QQ</span>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>搜索: /search 页数 关键词</p>
+        </div>
+      </div>
+      <div class="block">
+        <p class="title">高级搜索语法: </p>
+        <div class="content">
+          <p>搜索QQ号为 23333 的用户发送的所有消息: <code>sender.id: 23333</code></p>
+          <p>搜索消息中包含 "ohhhh" 的消息: <code>message: ohhhh</code></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="pixiv">
+      <p class="title">Pixiv搜图</p>
+      <span class="tag">自然语言调用</span>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>搜索: /pixiv 关键词</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="arcaea">
+      <p class="title">Arcaea查分</p>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>/a b30 用户名或id - 查询Best30</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="randomimages">
+      <p class="title">随机图片</p>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>随机猫猫 - 随机猫娘图片</p>
+          <p>随机老婆 - 随机二刺螈老婆图片</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="ping">
+      <p class="title">GeoPing</p>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>/ping IP - 使用来自全球的多个节点测试延迟</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="waifu">
+      <p class="title">群老婆</p>
+      <span class="tag">仅支持QQ</span>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>抽老婆 - 随机挑选一位单身群友成为你的老婆</p>
+          <p>查老婆 - 康康你老婆是谁</p>
+          <p>离婚 - 如题</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="sign">
+      <p class="title">签到</p>
+      <span class="tag">仅支持QQ</span>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>签到 - 目前仅作为观赏使用，等级计算来自消息数量</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="item" id="music">
+      <p class="title">点歌</p>
+      <div class="block">
+        <p class="title">可用指令: </p>
+        <div class="content">
+          <p>点歌 xxx - 点播一首歌曲，以语音消息的方式发送出来</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="background">
+    <div class="overlay1"></div>
+    <div class="overlay2"></div>
+  </div>
+
+  <script>
+    const config = JSON.parse(`[[rule]]`)
+    const current = '[[group]]'
+
+    const currentConfig = config[current]
+    
+    if (currentConfig) {
+      for (const id of currentConfig) {
+        document.getElementById(id).style.display = 'none'
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    @font-face {
+      font-family: MiSans;
+      src: url(https://static.imoe.xyz/MiSans.ttf);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .gray {
+      background-color: #787c7f;
+    }
+
+    .yellow {
+      background-color: #c8b457;
+    }
+
+    .green {
+      background-color: #5cb85c;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #000;
+    }
+
+    table tr {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #000;
+    }
+
+    table tr td {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #000;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      font-size: 32px;
+      font-family: MiSans;
+      line-height: 40px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+  </style>
+
+  <table id="table"></table>
+
+  <script>
+    const table = document.getElementById('table');
+    
+    const target = '[[target]]'
+    const inputs = '[[inputs]]'
+
+    const targetArr = target.split('')
+
+    const words = inputs.split(',').reverse()
+
+    for (const word of words) {
+      const tr = document.createElement('tr')
+      const items = word.split('')
+
+      for (const index in items) {
+        const item = items[index]
+        const td = document.createElement('td')
+
+        if (item === targetArr[index]) {
+          td.classList.add('green')
+        } else if (target.includes(item)) {
+          td.classList.add('yellow')
+        } else {
+          td.classList.add('gray')
+        }
+
+        td.innerText = item
+
+        tr.appendChild(td)
+      }
+
+      table.appendChild(tr)
+    }
+  </script>
+</body>
+</html>

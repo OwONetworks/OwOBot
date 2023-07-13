@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    @font-face {
+      font-family: MiSans;
+      src: url(https://static.imoe.xyz/MiSans.ttf);
+    }
+
+    body, html {
+      background-color: #000;
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container .item {
+      --width: 170px;
+      --height: 380px;
+      height: var(--height);
+      width: var(--width);
+      border-radius: 32px;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .container .item:first-child {
+      margin-left: 0;
+    }
+
+    .container .item .num {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: var(--width);
+      text-align: center;
+      font-size: 240px;
+      color: #b6b6b6;
+      opacity: 0.015;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      font-family: MiSans;
+      font-weight: 100;
+      width: calc(var(--width) - 40px);
+      margin-left: 20px;
+      overflow: hidden;
+    }
+
+    .container .item .active {
+      --color: #be5711;
+      --shadow: #7a3a0f;
+      opacity: 1;
+      color: var(--color);
+      text-shadow: var(--shadow) 0 0 80px
+        , var(--shadow) 0 0 60px
+        , var(--shadow) 0 0 60px
+        , var(--shadow) 0 0 60px
+        , var(--color) 0 0 10px
+        , var(--color) 0 0 10px
+        , var(--color) 0 0 20px;
+      z-index: 100;
+    }
+
+    .container .item .gird {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: var(--width);
+      height: var(--height);
+      background:
+        -webkit-linear-gradient(top, transparent 9px, #000 10px),
+        -webkit-linear-gradient(left, transparent 9px, #000 10px)
+        ;
+      background-size: 10px 10px;
+      z-index: 999;
+      opacity: 0.6;
+    }
+
+    .container .item .lights .top1 {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      width: 20px;
+      height: 2px;
+      border-radius: 100%/0 0 30px 30px;
+      box-shadow: 0px 6px 0px white;
+      filter: blur(4px);
+    }
+
+    .container .item .lights .top2 {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 40px;
+      height: 2px;
+      border-radius: 100%/0 0 30px 30px;
+      box-shadow: 0px 6px 0px white;
+      filter: blur(4px);
+    }
+
+    .container .item .lights .left {
+      position: absolute;
+      top: 90px;
+      left: 30px;
+      width: 2px;
+      height: 120px;
+      border-radius: 30px 0 30px 100%/0;
+      box-shadow: 6px 0px 0px white;
+      filter: blur(4px);
+    }
+
+    .container .item .bottom-img {
+      background-image: url(https://cdn.qwq.kim/d/Native/upload/bottom.png);
+      width: 104px;
+      height: 78px;
+      position: absolute;
+      bottom: 36px;
+      left: 30px;
+      filter: grayscale(100%);
+    }
+  </style>
+
+  <div class="container">
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n1">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <p class="num active">.</p>
+      <p class="num">0</p>
+      <p class="num">1</p>
+      <p class="num">2</p>
+      <p class="num">3</p>
+      <p class="num">4</p>
+      <p class="num">5</p>
+      <p class="num">6</p>
+      <p class="num">7</p>
+      <p class="num">8</p>
+      <p class="num">9</p>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n2">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n3">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n4">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n5">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n6">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+    <div class="item">
+      <div class="gird"></div>
+      <div class="lights">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="left"></div>
+      </div>
+      <div class="group">
+        <p class="num active" id="n7">0</p>
+        <p class="num">0</p>
+        <p class="num">1</p>
+        <p class="num">2</p>
+        <p class="num">3</p>
+        <p class="num">4</p>
+        <p class="num">5</p>
+        <p class="num">6</p>
+        <p class="num">7</p>
+        <p class="num">8</p>
+        <p class="num">9</p>
+      </div>
+      <div class="bottom-img"></div>
+    </div>
+  </div>
+
+  <script>
+    const n = []
+
+    n.push(document.getElementById('n1'))
+    n.push(document.getElementById('n2'))
+    n.push(document.getElementById('n3'))
+    n.push(document.getElementById('n4'))
+    n.push(document.getElementById('n5'))
+    n.push(document.getElementById('n6'))
+    n.push(document.getElementById('n7'))
+
+    const num = Math.random()
+    const target = (num + Number('[[addon]]')).toString()
+
+    const numbers = target.replace('.', '').split('');
+
+    for (const index in numbers) {
+      n[index].innerHTML = numbers[index]
+    }
+  </script>
+</body>
+</html>

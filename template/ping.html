@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ping</title>
+</head>
+<body>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: MiSans;
+      src: url(https://static.imoe.xyz/MiSans.ttf);
+    }
+
+    table {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+    }
+
+    table thead {
+      background-color: #F9FAFB;
+      box-shadow: 0px 0px 4px #494949;
+      font-size: 32px;
+      font-family: MiSans;
+      border-bottom: #a1a1a1 solid 1px;
+    }
+
+    tr td {
+      padding: 10px;
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    tr td img {
+      width: 32px;
+      line-height: 32px;
+      height: auto;
+      margin-right: 4px;
+    }
+  </style>
+
+  <table>
+    <thead>
+      <tr>
+        <td>LOCATION</td>
+        <td>PROVIDER</td>
+        <td>IP</td>
+        <td>LOSS</td>
+        <td>SENT</td>
+        <td>AVG</td>
+        <td>BEST</td>
+        <td>WORST</td>
+        <td>STDEV</td>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    const input = `[[result]]`
+    const data = JSON.parse(input)
+
+    const table = document.querySelector('tbody')
+    data.forEach(row => {
+      const tr = document.createElement('tr')
+      table.appendChild(tr)
+
+      const location = document.createElement('td')
+      const provider = document.createElement('td')
+      const ip = document.createElement('td')
+      const loss = document.createElement('td')
+      const sent = document.createElement('td')
+      const avg = document.createElement('td')
+      const best = document.createElement('td')
+      const worst = document.createElement('td')
+      const stdev = document.createElement('td')
+      const country = document.createElement('img')
+
+      country.src = `https://cdn.jsdelivr.net/gh/madebybowtie/FlagKit@2.2/Assets/SVG/${row.country}.svg`
+
+      location.appendChild(country)
+      location.appendChild(document.createTextNode(row.location))
+
+      provider.innerText = row.provider
+      ip.innerText = row.ip
+      loss.innerText = row.loss
+      sent.innerText = row.sent
+      avg.innerText = row.avg + 'ms'
+      best.innerText = row.best + 'ms'
+      worst.innerText = row.worst + 'ms'
+      stdev.innerText = row.stdev + 'ms'
+
+      tr.appendChild(location)
+      tr.appendChild(provider)
+      tr.appendChild(ip)
+      tr.appendChild(loss)
+      tr.appendChild(sent)
+      tr.appendChild(avg)
+      tr.appendChild(best)
+      tr.appendChild(worst)
+      tr.appendChild(stdev)
+
+      tr.style.backgroundColor = row.loss === 1 ? '#FFF' : '#F9FAFB'
+
+      table.appendChild(tr)
+    })
+  </script>
+</body>
+</html>

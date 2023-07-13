@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R6s Status</title>
+</head>
+<body>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1E1E1E;
+      font-family: MiSans;
+      font-style: italic;
+      font-weight: bold;
+      color: #eee;
+    }
+
+    @font-face {
+      font-family: MiSans;
+      src: url(https://static.imoe.xyz/MiSans.ttf);
+    }
+
+    .box {
+      width: calc(100% - 48px);
+      height: calc(100% - 48px);
+      padding: 24px;
+    }
+
+    .account {
+      width: 100%;
+      height: 80px;
+    }
+
+    .account .left {
+      float: left;
+    }
+
+    .account .right {
+      float: right;
+    }
+
+    .img {
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .account .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid #eee;
+      box-shadow: 0 0 0 2px #1E1E1E;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .account .info {
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: 16px;
+    }
+
+    .account .info .name {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .account .info .level {
+      font-size: 18px;
+      margin: 0;
+      padding-top: 8px;
+    }
+
+    .icon {
+      vertical-align: middle;
+      width: 64px;
+      height: 64px;
+      display: inline-block;
+    }
+
+    .account .rank-text {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .status {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .status .item {
+      width: calc(50% - 16px);
+      margin-bottom: 16px;
+      background-color: #2E2E2E;
+      border-radius: 8px;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    .status .item p {
+      margin: 4px;
+    }
+
+    .status .item .title {
+      font-size: 22px;
+    }
+
+    .status .item .value {
+      font-size: 16px;
+    }
+  </style>
+
+  <div class="box">
+    <div class="account">
+      <div class="left">
+        <div class="avatar img" style="background-image: url([[avatar]]);"></div>
+        <div class="info">
+          <p class="name">[[name]]</p>
+          <p class="level">Lv. [[level]]</p>
+        </div>
+      </div>
+
+      <div class="right">
+        <p class="rank-text">[[rank]]</p>
+        <div class="icon img" style="background-image: url([[rankImage]]);"></div>
+      </div>
+    </div>
+
+    <div class="status">
+      <div class="item">
+        <p class="title">K/D</p>
+        <p class="value">[[kd]]</p>
+      </div>
+      <div class="item">
+        <p class="title">击杀</p>
+        <p class="value">[[kills]]</p>
+      </div>
+      <div class="item">
+        <p class="title">死亡</p>
+        <p class="value">[[deaths]]</p>
+      </div>
+      <div class="item">
+        <p class="title">游玩场次</p>
+        <p class="value">[[matches]]</p>
+      </div>
+      <div class="item">
+        <p class="title">胜利</p>
+        <p class="value">[[wins]]</p>
+      </div>
+      <div class="item">
+        <p class="title">胜率</p>
+        <p class="value">[[winPct]]%</p>
+      </div>
+      <div class="item">
+        <p class="title">爆头击杀</p>
+        <p class="value">[[headshots]]</p>
+      </div>
+      <div class="item">
+        <p class="title">爆头率</p>
+        <p class="value">[[headshotPct]]%</p>
+      </div>
+      <div class="item">
+        <p class="title">最大MMR</p>
+        <p class="value">[[maxMMR]]</p>
+      </div>
+      <div class="item">
+        <div class="left" style="display: inline-block; vertical-align: top;">
+          <p class="title">最高段位</p>
+          <p class="value">[[maxRank]]</p>
+        </div>
+        <div class="icon img" style="background-image: url([[maxRankImage]]); vertical-align: top; float: right;"></div>
+      </div>
+      <div class="item">
+        <div class="left" style="display: inline-block; vertical-align: top;">
+          <p class="title">最常用进攻方</p>
+          <p class="value">[[topAttackerName]]</p>
+        </div>
+        <div class="icon img" style="background-image: url([[topAttackerImage]]); vertical-align: top; float: right;"></div>
+      </div>
+      <div class="item">
+        <div class="left" style="display: inline-block; vertical-align: top;">
+          <p class="title">最常用防守方</p>
+          <p class="value">[[topDefenderName]]</p>
+        </div>
+        <div class="icon img" style="background-image: url([[topDefenderImage]]); vertical-align: top; float: right;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "oicq": {
+    "enbale": true,
+    "config": {
+      "platform": 1
+    },
+    "account": {
+      "uin": 10000,
+      "password": "密码"
+    }
+  },
+  "telegram": {
+    "enable": true,
+    "account": {
+      "token": "Token"
+    }
+  },
+  "logger": {
+    "level": "INFO"
+  },
+  "plugins": {
+    "arcaea": {
+      "token": "",
+      "host": ""
+    },
+    "clone": {
+      "api": ""
+    },
+    "elasticsearch": {
+      "whitelist": [
+        "需要启用群聊消息搜索的群组"
+      ],
+      "elasticsearch": {
+        "host": "https://localhost:9200",
+        "index": "owobot-messages",
+        "apikey": ""
+      }
+    },
+    "gaming": {
+      "enableIPv6Pool": false,
+      "pools": [
+        "IPv6池"
+      ]
+    },
+    "llm": {
+      "host": "",
+      "apikey": "",
+      "enableChat": false
+    },
+    "wordle": {
+      "tencent": {
+        "secretId": "",
+        "secretKey": ""
+      }
+    },
+    "db": {
+      "client": "mysql",
+      "connection": {
+        "host": "",
+        "port": 3306,
+        "user": "",
+        "password": "",
+        "database": ""
+      }
+    },
+    "proxy": {
+      "socks5": {
+        "host": "",
+        "port": 1080
+      },
+      "http": {
+        "url": "http://127.0.0.1:1080"
+      }
+    }
+  }
+}

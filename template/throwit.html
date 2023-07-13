@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div class="bg"></div>
+    <div id="avatar"></div>
+  </div>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg {
+      width: 512px;
+      height: 512px;
+      z-index: 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://cdn.qwq.kim/d/Native/throw.png') no-repeat;
+    }
+
+    #avatar {
+      position: fixed;
+      top: 184px;
+      left: 22px;
+      border-radius: 100%;
+      height: 130px;
+      width: 130px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url(http://q1.qlogo.cn/g?b=qq&nk=[[qid]]&s=640);
+    }
+  </style>
+
+  <script>
+    document.getElementById('avatar').style.transform = `rotate(${Math.random() * 360}deg)`
+  </script>
+</body>
+</html>

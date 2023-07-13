@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    @font-face {
+      font-family: MiSans;
+      src: url(https://static.imoe.xyz/MiSans.ttf);
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("http://127.0.0.1:30001/uploads/arc1.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      font-family: MiSans;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 0;
+      padding: 0;
+      vertical-align: top;
+    }
+
+    .line {
+      width: 100%;
+      height: 1px;
+      background-color: #00000066;
+      margin: 4px 0;
+    }
+
+    .user {
+      width: 80%;
+      margin-top: 5%;
+      margin-left: 10%;
+      background-color: #f0f8ff66;
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .user div.icon {
+      width: 80px;
+      height: 80px;
+      transform: rotate(45deg);
+      border: 1px solid #00000066;
+      margin: 20px;
+    }
+
+    .user img.icon {
+      width: 100px;
+      height: 100px;
+      transform: rotate(-45deg);
+      margin-left: -10px;
+      margin-top: -10px;
+    }
+
+    .user>div {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .username {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .cards {
+      margin-left: 10%;
+      width: 80%;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      background-color: #f0f8ff66;
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      padding: 10px;
+      width: 30%;
+      margin-top: 10px;
+    }
+
+    .card img {
+      width: 96px;
+      height: 96px;
+      border-radius: 8px;
+    }
+
+    .card p {
+      display: block;
+    }
+
+    .card .title {
+      font-size: 20px;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 240px;
+    }
+
+    .card .score {
+      font-size: 22px;
+    }
+
+    .card .status {
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    .card .status .pure {
+      color: #a231ff;
+    }
+
+    .card .status .far {
+      color: #ff8c00;
+    }
+
+    .card .status .miss {
+      color: #f53030;
+    }
+
+    .card .status span {
+      margin-right: 6px;
+    }
+
+    .card .header {
+      font-size: 14px;
+      border-radius: 6px;
+      overflow: hidden;
+      display: inline-block;
+      box-shadow: 0 0 4px #00000066;
+    }
+
+    .card .header span {
+      padding: 2px;
+      
+    }
+
+    .card .header[data-lvl*="Past"] {
+      background-color: #56c7db;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Past"] .header1 {
+      background-color: #7ecfdd;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Presend"] {
+      background-color: #b3d46b;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Presend"] .header1 {
+      background-color: #d7f793;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Future"] {
+      background-color: #a231ff;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Future"] .header1 {
+      background-color: #c37cfd;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Beyond"] {
+      background-color: #C41F34;
+      color: #fff;
+    }
+
+    .card .header[data-lvl*="Beyond"] .header {
+      background-color: #cc4456;
+      color: #fff;
+    }
+
+    .card:nth-child(1) .header .header3 {
+      background-color: #f5c730 !important;
+      color: #fff;
+    }
+
+    .card:nth-child(2) .header .header3 {
+      background-color: #919191 !important;
+      color: #fff;
+    }
+
+    .card:nth-child(3) .header .header3 {
+      background-color: #A67A4F !important;
+      color: #fff;
+    }
+
+    .card .header .header3 {
+      background-color: #3b3b3b;
+      color: #fff;
+    }
+  </style>
+
+  <div class="user">
+    <div style="display: inline-block;">
+      <div class="icon">
+        <img src="[[partner]]" alt="" class="icon">
+      </div>
+    </div>
+    <div style="margin-left: 10px;">
+      <p class="username">[[name]]</p>
+      <div class="line"></div>
+      <p>Best 30: [[best30]]</p>
+      <p>Recent 10: [[recent10]]</p>
+    </div>
+  </div>
+  <div class="cards"></div>
+
+  <script>
+    const data = JSON.parse(`[[songs]]`);
+
+    const cards = document.querySelector('.cards');
+
+    data.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.img}" alt="" />
+        <div style="display: inline-block; vertical-align: top; margin-left: 10px;">
+          <div class="header" data-lvl="${item.song_rating}">
+            <span class="header1">${item.user_rating}</span>
+            <span class="header2">${item.song_rating}</span>
+            <span class="header3">#${index + 1}</span>
+          </div>
+          <p class="title">${item.name}</p>
+          <p class="score">${item.score}</p>
+          <p class="status">
+            <span class="pure">Pure ${item.status.pure} (+${item.status.shiny})</span>
+            <span class="far">Far ${item.status.far}</span>
+            <span class="miss">Miss ${item.status.miss}</span>
+          </p>
+        </div>
+      `;
+      cards.appendChild(card);
+    });
+  </script>
+</body>
+
+</html>
